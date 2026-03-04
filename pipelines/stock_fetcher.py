@@ -20,10 +20,3 @@ class StockFetcher:
         if self._data.empty:
             raise ValueError("could not find any data")
         return float(self._data["Close"].iloc[-1])
-
-"""
-data = StockFetcher("SAP.DE")
-#data.fetch()        # uses "1mo" by default
-data.fetch("5d")    # uses "5d"
-print(f"{data.latest_price():.2f}")
-"""
