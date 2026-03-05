@@ -1,5 +1,7 @@
 #Python library that lets you download stock market data from Yahoo Finance for free with no API key
-import yfinance as yf 
+import yfinance as yf
+import logging
+logger = logging.getLogger(__name__)
 
 class StockFetcher:
     def __init__(self,ticker):
@@ -7,16 +9,34 @@ class StockFetcher:
         self._data = None # no data
 
     def fetch(self, period="1mo"):
+        logger.info(f"Fetching {self.ticker} data for {period}")
         stock = yf.Ticker(self.ticker)
         self._data = stock.history(period)
         if self._data.empty:
+            logger.error(f"No data found for ticker: {self.ticker}")
             raise ValueError("could not find any data")
+        rows=len(self._data)
+        logger.info(f"Successfully fetched {rows} rows for {self.ticker}")
         return self._data
 
     def latest_price(self):
-        if self._data is None:  # nobody called fetch() yet
-            self.fetch()        # call it automatically
+        if self._data is None:  # fetch() not called
+            self.fetch()        # call it 
 
         if self._data.empty:
             raise ValueError("could not find any data")
         return float(self._data["Close"].iloc[-1])
+
+if __name__ == "__main__":  # this only runs when this file is executed directly
+    #configuring logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s %(message)s"
+    )
+    fetcher = StockFetcher("SAP.DE")
+    try:
+        fetcher.fetch()
+        print(fetcher.latest_price())
+    except ValueError as e:
+        print(f"Could not fetch data: {e}")
+    
