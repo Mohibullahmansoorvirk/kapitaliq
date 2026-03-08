@@ -36,7 +36,7 @@ if __name__ == "__main__":  # this only runs when this file is executed directly
     )
     fetcher = StockFetcher("SAP.DE")
     try:
-        fetcher.fetch()
+        print(fetcher.fetch())
         print(fetcher.latest_price())
     except ValueError as e:
         print(f"Could not fetch data: {e}")
