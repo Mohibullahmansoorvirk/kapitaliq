@@ -15,5 +15,5 @@ class StockPrice(Base):
     volume = Column(BigInteger)
 
     #__repr__ returns the printable representation of the object
-    def __repr__(self):
+    def __repr__(self) -> str:
          return f"StockPrice(ticker='{self.ticker}', close={self.close})"
