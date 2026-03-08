@@ -1,9 +1,10 @@
 from pipelines.database import SessionLocal
 from pipelines.models import StockPrice
 import logging
+import pandas as pd
 logger = logging.getLogger(__name__)
 
-def save_stock_data(ticker, cleaned_data):
+def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
 
     db= SessionLocal()
 

@@ -1,14 +1,15 @@
 #Python library that lets you download stock market data from Yahoo Finance for free with no API key
 import yfinance as yf
 import logging
+import pandas as pd
 logger = logging.getLogger(__name__)
 
 class StockFetcher:
-    def __init__(self,ticker):
+    def __init__(self,ticker: str) -> None:
         self.ticker = ticker
         self._data = None # no data
 
-    def fetch(self, period="1mo"):
+    def fetch(self, period: str ="1mo") -> pd.DataFrame:
         logger.info(f"Fetching {self.ticker} data for {period}")
         stock = yf.Ticker(self.ticker)
         self._data = stock.history(period)
@@ -19,7 +20,7 @@ class StockFetcher:
         logger.info(f"Successfully fetched {rows} rows for {self.ticker}")
         return self._data
 
-    def latest_price(self):
+    def latest_price(self) -> float:
         if self._data is None:  # fetch() not called
             self.fetch()        # call it 
 
