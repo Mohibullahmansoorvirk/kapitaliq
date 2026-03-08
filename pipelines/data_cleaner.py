@@ -1,6 +1,7 @@
 import logging
 logger = logging.getLogger(__name__)
 
+
 class DataCleaner:
 
     def __init__(self, data):

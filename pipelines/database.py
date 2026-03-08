@@ -14,8 +14,5 @@ SessionLocal = sessionmaker(bind=engine)
 from pipelines.models import StockPrice
 
 if __name__ == "__main__":
-    print("Starting...")
-    print("StockPrice imported")
     print(f"Tables known to Base: {Base.metadata.tables.keys()}")
     Base.metadata.create_all(engine)
-    print("✅ Tables created successfully")
