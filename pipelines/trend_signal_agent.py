@@ -4,6 +4,11 @@ logger = logging.getLogger(__name__)
 from pipelines.stock_fetcher import StockFetcher
 from pipelines.data_cleaner import DataCleaner
 
+
+# Unlike DataCleaner where data is locked in at creation time (__init__) - which requires to create the object at every instance.
+# TrendSignalAgent is a long-lived object. used later in other objects/loops. Hence, Data is passed into run() method
+# so the same initial instance (once created) can analyze fresh data every day without recreation.
+
 class TrendSignalAgent:
     def __init__ (self, ticker: str) -> None:
         self.ticker = ticker
@@ -11,16 +16,15 @@ class TrendSignalAgent:
 
     def _calculate_ma20(self, cleaned_data: pd.DataFrame) -> float:
         logger.info(f"Calculating the MA20")
-        print("MA20 is",float((cleaned_data["Close"].iloc[-20:]).mean()))
         return float((cleaned_data["Close"].iloc[-20:]).mean()) # last 20 days including today
 
     def _extract_todays_price(self, cleaned_data: pd.DataFrame) -> float:
         logger.info(f"Extracting todays price")
-        print("Todays price is",float(cleaned_data["Close"].iloc[-1]))
         return float(cleaned_data["Close"].iloc[-1])
 
     def run(self, cleaned_data: pd.DataFrame) -> str:
         logger.info(f"Final decision")
+        # BULLISH = price trending up -> Buy or Hold, BEARISH = price trending down -> Sell
         if self._calculate_ma20(cleaned_data) < self._extract_todays_price(cleaned_data):
             return f"BULLISH"
         else:
