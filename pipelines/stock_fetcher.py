@@ -12,10 +12,20 @@ class StockFetcher:
     def fetch(self, period: str ="1mo") -> pd.DataFrame:
         logger.info(f"Fetching {self.ticker} data for {period}")
         stock = yf.Ticker(self.ticker)
-        self._data = stock.history(period)
+        # try fetching data from yfinance - "circuit breaker"
+        try:
+            self._data = stock.history(period)
+        except Exception as e:
+             # log the failure and stop immediately and dont let system hang
+            logger.error(f"yfinance failed for {self.ticker}: {e}")
+             # raise stops execution and tells exactly what went wrong
+            raise ConnectionError(f"Data source unavailable for {self.ticker}")
+        # circuit breaker -ended
+        
         if self._data.empty:
             logger.error(f"No data found for ticker: {self.ticker}")
             raise ValueError("could not find any data")
+        
         rows=len(self._data)
         logger.info(f"Successfully fetched {rows} rows for {self.ticker}")
         return self._data
