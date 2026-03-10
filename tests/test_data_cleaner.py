@@ -8,6 +8,7 @@ def test_does_clean_return_expected_columns():
 
     cleaner = DataCleaner(data)
     clean_data = cleaner.clean()
+
     
     assert list(clean_data.columns) == ["Open", "High", "Low", "Close", "Volume"]
 

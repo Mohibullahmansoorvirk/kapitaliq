@@ -29,7 +29,6 @@ def test_save_stock_data(fake_session_local_class):
 @patch("pipelines.storage.SessionLocal")
 def test_rollback_stock_data(fake_session_local_class):
     #side effect is something you attach to a mock method to make it behave in a specific way when called. In this case simulating a crash of DB.
-    #
     fake_session_local_class.return_value.add.side_effect = Exception("db crashed")
 
     #to test that a function raises an exception in pytest

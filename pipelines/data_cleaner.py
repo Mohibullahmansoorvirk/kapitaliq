@@ -6,7 +6,7 @@ import pandas as pd
 class DataCleaner:
 
     def __init__(self, data: pd.DataFrame) -> None:
-        self._data = data
+        self._data = data.copy() #to copy the original raw data incase it gets corrupts somewhere in the pipeline   
         logger.info(f"data successfully imported for cleaning")
 
     # keep only relevant columns
@@ -43,7 +43,7 @@ class DataCleaner:
         return self._data
     
     #runs all cleaning steps, returns clean DataFrame
-    def clean(self) -> pd.DataFrame:    
+    def clean(self) -> pd.DataFrame: 
         logger.info(f"cleaning the data frame")         
         self._drop_unnecessary_columns()
         self._handle_nulls()
