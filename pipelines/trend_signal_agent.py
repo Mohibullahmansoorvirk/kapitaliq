@@ -1,8 +1,6 @@
 import pandas as pd
 import logging
 logger = logging.getLogger(__name__)
-from pipelines.stock_fetcher import StockFetcher
-from pipelines.data_cleaner import DataCleaner
 
 
 # Unlike DataCleaner where data is locked in at creation time (__init__) - which requires to create the object at every instance.
@@ -42,6 +40,9 @@ if __name__ == "__main__":
         format="%(asctime)s %(levelname)s %(name)s %(message)s"
     )
     
+    from pipelines.stock_fetcher import StockFetcher
+    from pipelines.data_cleaner import DataCleaner
+
     fetcher = StockFetcher("SAP.DE")
     data = fetcher.fetch()
 
