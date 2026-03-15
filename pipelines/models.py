@@ -1,3 +1,6 @@
+"""
+models.py serves as the base of defining models/tables for the database
+"""
 from sqlalchemy import Column, Integer, String, Float, BigInteger, Date
 from pipelines.base import Base 
 
@@ -13,6 +16,7 @@ class StockPrice(Base):
     low = Column(Float)
     close = Column(Float, nullable=False)
     volume = Column(BigInteger)
+    sentiment_score = Column(Float, nullable=True)
 
     #__repr__ returns the printable representation of the object  - useful for debugging
     def __repr__(self) -> str:
