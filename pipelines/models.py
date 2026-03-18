@@ -39,4 +39,4 @@ class NewsArticle(Base):
 
     #__repr__ returns the printable representation of the object  - useful for debugging
     def __repr__(self) -> str:
-         return f"StockPrice(ticker='{self.ticker}', close={self.close})"
+         return f"NewsArticle(ticker='{self.ticker}', embedding_vector={self.embedding_vector})"
