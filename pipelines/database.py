@@ -12,7 +12,9 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 
 from pipelines.models import StockPrice
+from pipelines.models import NewsArticle
 
+#One time manual call to create tables directly from SQLAlchemy models. Later transfered to Alembix for migration tracking
 if __name__ == "__main__":
     print(f"Tables known to Base: {Base.metadata.tables.keys()}")
     Base.metadata.create_all(engine)

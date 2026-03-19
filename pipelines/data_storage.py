@@ -4,6 +4,7 @@ import logging
 import pandas as pd
 logger = logging.getLogger(__name__)
 
+
 def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
 
     db= SessionLocal()
