@@ -1,3 +1,6 @@
+"""
+Trend Signal Agent is the first step of Data Analysis Agent. The competence of this agent was takenover in Data Analysis Agent.
+"""
 import pandas as pd
 import logging
 logger = logging.getLogger(__name__)

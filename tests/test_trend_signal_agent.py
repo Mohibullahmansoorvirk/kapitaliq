@@ -1,4 +1,4 @@
-from pipelines.trend_signal_agent import TrendSignalAgent
+from agents.trend_signal_agent import TrendSignalAgent
 import pandas as pd
 
 def test_bullish():
