@@ -39,3 +39,15 @@ class ConfigNLPAgent:
     #timeout is set to 10 seconds as because our model takes an average of 3 seconds to reply this short response 
     # and adding a buffer of 3x due to network latency or load is maximum 10 seconds
     timeout : int = 10
+
+@dataclass
+class ConfigFinalDecisionAgent:
+    """Class of specific configs for Final Decision Agent"""
+    #Analyzing outputs of both agents and returning a sensible answer
+    # 0.75 words per token for our model  = 250 tokens and adding a 20% buffer is max tokens on output of an LLM
+    max_tokens: int = 300
+    #Temperature is set to 0 as we do not want creativity and only want clear answers based on highest probabilites
+    temperature : float = 0.0
+    #timeout is set to 10 seconds as because our model takes an average of 3 seconds to reply this short response 
+    # and adding a buffer of 3x due to network latency or load is maximum 10 seconds
+    timeout : int = 10

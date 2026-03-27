@@ -30,7 +30,7 @@ class NewsFetcher:
         # try fetching data from NewsAPI call - "circuit breaker"
         try:
         #API end points
-            # "q" arqument -> qoutes around the company name tells NewsAPI that this word is a must appear in the article
+        # "q" arqument -> qoutes around the company name tells NewsAPI that this word is a must appear in the article
             news_api_response = news_api.get_everything(q=f'"{ticker_to_company.get(self.ticker)}" stock', language="en", page_size=10) #page size is the number of articles
         
             articles = news_api_response['articles']
