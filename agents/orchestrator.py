@@ -47,7 +47,9 @@ def data_analysis_agent_node (state: AgentState) -> dict:
     try:
         data_analysis_result = run_with_retry()
         return {"analysis_result": data_analysis_result}
-    except Exception: # because of retry paramter inside the @with_retry decorator it picks up automatically to throw only specific type of exception
+    
+    # fallback strategy if after 3 tries still an exception thrown
+    except Exception: 
         return {"analysis_result": "Analysis currently unavailable. Please try again later."}
 
 def nlp_agent_node (state: AgentState) -> dict:
@@ -61,7 +63,9 @@ def nlp_agent_node (state: AgentState) -> dict:
     try:
         nlp_result = run_with_retry()
         return {"nlp_result": nlp_result}
-    except Exception: # because of retry paramter inside the @with_retry decorator it picks up automatically to throw only specific type of exception
+    
+    # fallback strategy
+    except Exception:
         return {"nlp_result": "Response currently unavailable. Please try again later."}
 
 def final_decision_agent_node (state: AgentState) -> dict:
@@ -75,7 +79,9 @@ def final_decision_agent_node (state: AgentState) -> dict:
     try:
         final_decision_result = run_with_retry()
         return {"final_decision": final_decision_result}
-    except Exception: # because of retry paramter inside the @with_retry decorator it picks up automatically to throw only specific type of exception
+    
+    # fallback strategy
+    except Exception: 
         return {"final_decision": "Response currently unavailable. Please try again later."}
 
 
