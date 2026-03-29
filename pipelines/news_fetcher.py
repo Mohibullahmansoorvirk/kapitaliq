@@ -31,6 +31,7 @@ class NewsFetcher:
         try:
         #API end points
         # "q" arqument -> qoutes around the company name tells NewsAPI that this word is a must appear in the article
+        #no date filter required because this always retreives top 10 latest news articles
             news_api_response = news_api.get_everything(q=f'"{ticker_to_company.get(self.ticker)}" stock', language="en", page_size=10) #page size is the number of articles
         
             articles = news_api_response['articles']

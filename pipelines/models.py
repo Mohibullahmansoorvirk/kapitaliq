@@ -1,7 +1,7 @@
 """
 models.py serves as the base of defining models/tables for the database
 """
-from sqlalchemy import Column, Integer, String, Float, BigInteger, Date
+from sqlalchemy import Column, Integer, String, Float, BigInteger, Date, UniqueConstraint
 from pgvector.sqlalchemy import Vector
 from pipelines.base import Base 
 
@@ -9,6 +9,9 @@ from pipelines.base import Base
 class StockPrice(Base):
     __tablename__ = "stock_prices"
     
+    #additional tables related info. here its unique row constraint based on ticker, and date
+    __table_args__ = (UniqueConstraint('ticker', 'date', name='uq_stock_ticker_date'),) #"uq_stock_ticker_date" - unique name of the constraint
+
     id = Column(Integer, primary_key=True)
     ticker = Column(String, nullable=False)
     date = Column(Date, nullable=False)
@@ -25,7 +28,7 @@ class StockPrice(Base):
 
 class NewsArticle(Base):
     __tablename__ = "news_articles"
-    
+    __table_args__ = (UniqueConstraint('ticker', 'published_date', 'article_url', name='uq_news_ticker_date_url'),)
     id = Column(Integer, primary_key=True)
     ticker = Column(String, nullable=False)
     published_date = Column(Date, nullable=False)

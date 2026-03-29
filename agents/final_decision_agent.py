@@ -40,6 +40,7 @@ class FinalDecisionAgent:
         "NLP Agent Output = {nlp_agent_output}" \
         "Name of the Stock = {ticker} " \
         "For every Name of the Stock , understand the Data Analyst Agent Output and the NLP Agent Output" \
+        "If you receive NLP Agent Output as No recent news available for {ticker}, then mention this in the reason aswell"\
         "Based on your understanding, answer in the following format:" \
         "Stock Name : Name of the Stock \n" \
         "Financial Decision: Either Bullish or Bearish based on instructions in system_template \n" \

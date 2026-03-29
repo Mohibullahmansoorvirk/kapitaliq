@@ -42,10 +42,12 @@ class NLPAgent:
             "If you cant output with certainity based on the information provided, say Data provided is not enough. " \
             "Always end your response, in the next line, with the wording Disclaimer: This decision is purely based on the information I have."
 
+            #NLP Agent can receive empty news chunks due to the date filter on rag_retriever.py of last 7 days
             human_template = "User Query = {user_query}" \
             "News Chunks = {combined_news_chunk}" \
             "Name of the Stock = {ticker} " \
             "For every Name of the Stock , understand the User Query and the News Chunks" \
+            "If you receive an empty News Chunks, answer with No recent news available for {ticker}"\
             "Based on your understanding, answer in the following format:" \
             "Stock Name : Name of the Stock \n" \
             "Financial Decision: Either Bullish or Bearish based on News Chunks and User Query \n" \
