@@ -17,7 +17,6 @@ class StockPrice(Base):
     low = Column(Float)
     close = Column(Float, nullable=False)
     volume = Column(BigInteger)
-    sentiment_score = Column(Float, nullable=True)
 
     #__repr__ returns the printable representation of the object  - useful for debugging
     def __repr__(self) -> str:

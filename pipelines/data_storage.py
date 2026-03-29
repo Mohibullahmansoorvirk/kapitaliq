@@ -18,8 +18,7 @@ def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
                 high = row.High,
                 low = row.Low,
                 close = row.Close,
-                volume = row.Volume,
-                sentiment_score = row.SentimentScore # this still needs to be implemented.
+                volume = row.Volume
                                 )
             logger.info(f"saving row no {i}")
             db.add(stock)

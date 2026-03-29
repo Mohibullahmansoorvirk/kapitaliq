@@ -1,7 +1,6 @@
 from agents.nlp_agent import NLPAgent
-import pandas as pd
 from unittest.mock import MagicMock, patch
-from pipelines.rag_retriever import retrieve_relevant_chunks
+
 
 fake_list_of_strings = ["SAP reported strong earnings...", "SAP revenue grew 12%...", "SAP cloud division expanding..."]
 
