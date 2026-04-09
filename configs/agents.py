@@ -51,3 +51,16 @@ class ConfigFinalDecisionAgent:
     #timeout is set to 10 seconds as because our model takes an average of 3 seconds to reply this short response 
     # and adding a buffer of 3x due to network latency or load is maximum 10 seconds
     timeout : int = 10
+
+@dataclass
+class ConfigIntentRouter:
+    """Class of specific configs for IntentRouter"""
+    #Based on the user query need to classify it into one of the 3 categories
+    # 0.75 words per token for our model
+    #only need to return the classification and the ticker. 50 tokens + adding 20%
+    max_tokens: int = 60
+    #Temperature is set to 0 as we do not want creativity and only want clear answers based on highest probabilites
+    temperature : float = 0.0
+    #timeout is set to 10 seconds as because our model takes an average of 3 seconds to reply this short response 
+    # and adding a buffer of 3x due to network latency or load is maximum 10 seconds
+    timeout : int = 10

@@ -5,7 +5,7 @@ Unlike the scheduler which runs daily at 9:30am, this runs instantly when a user
 """
 
 from pipelines.scheduler import refresh_news_data, refresh_stock_data
-import pandas as pd
+
 
 
 def fetch_on_demand(ticker: str) -> None:
