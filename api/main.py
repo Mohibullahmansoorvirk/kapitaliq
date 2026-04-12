@@ -77,6 +77,7 @@ def handle_query(request: QueryRequest):
     # return a general answer without orchestrator
         return {"intent": intent, "ticker": None, "decision": "Please ask a stock specific question."}
     
+    #for dashboard & on-demand both orchestrator runs to get the most recent data
     elif intent in ["DASHBOARD", "ON_DEMAND"]:
         if intent == "ON_DEMAND":
             fetch_on_demand(ticker)
