@@ -43,8 +43,8 @@ class FinalDecisionAgent:
         "If you receive NLP Agent Output as No recent news available for {ticker}, then mention this in the reason aswell"\
         "Based on your understanding, answer in the following format:" \
         "Stock Name : Name of the Stock \n" \
-        "Financial Decision: Either Bullish or Bearish based on instructions in system_template \n" \
-        "Reason: clear , concise reasoning of how did you come up with the financial decision of maximum 120 words"
+        "in the next line, Financial Decision: Either Bullish or Bearish based on instructions in system_template \n" \
+        "in the next line, Reason: clear , concise reasoning of how did you come up with the financial decision of maximum 120 words"
 
         #.from_template("text") - takes a plain string and wraps it into a LangChain message template object
         system_message_template = SystemMessagePromptTemplate.from_template(system_template)

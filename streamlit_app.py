@@ -4,7 +4,9 @@ import pandas as pd
 
 st.title("KapitalIQ - Your Personal Investment Assistant")
 
-base_url = "http://127.0.0.1:8000"#where FastAPI is running
+#base_url = "http://127.0.0.1:8000"#originally where FastAPI is running
+
+base_url = "http://fastapi:8000" #for docker container - "fastapi" the service name in docker-compose.yml
 
 ### Dashboard
 
@@ -43,6 +45,6 @@ if st.button("Analyze"):
             )
             result = response.json()
             st.write("**Assistant Response:**")
-            st.write(result["Assistant Response"])
+            st.write(result["Assistant_Response"])
     else:
         st.warning("Please enter a question.")

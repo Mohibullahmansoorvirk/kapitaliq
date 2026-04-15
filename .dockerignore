@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+notebooks/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+*.docx
+agents/test_llm_connection.py

@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from pipelines.database import SessionLocal
 from pipelines.models import StockPrice, NewsArticle
 from sqlalchemy import select, desc
-from datetime import date, timedelta
 from pydantic import BaseModel
 from agents.intent_router import IntentRouter
 from pipelines.on_demand_fetcher import fetch_on_demand
@@ -75,7 +74,8 @@ def handle_query(request: QueryRequest):
 
     if intent == "GENERAL":
     # return a general answer without orchestrator
-        return {"intent": intent, "ticker": None, "decision": "Please ask a stock specific question."}
+        return {#"intent": intent, 
+            "ticker": None, "Assistant_Response": "Please ask a stock specific question."}
     
     #for dashboard & on-demand both orchestrator runs to get the most recent data
     elif intent in ["DASHBOARD", "ON_DEMAND"]:
@@ -99,7 +99,7 @@ def handle_query(request: QueryRequest):
          }) 
         #removing the "intent" to not confuse the user. as the intent needs to be worked on
         #return {"intent": intent, "ticker": ticker, "decision": response["final_decision"]}
-        return {"ticker": ticker, "Assistant Response": response["final_decision"]}
+        return {"ticker": ticker, "Assistant_Response": response["final_decision"]}
         
     
     

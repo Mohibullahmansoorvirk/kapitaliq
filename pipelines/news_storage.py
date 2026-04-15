@@ -78,5 +78,12 @@ def save_news_articles(ticker: str) -> None:
 
 
 if __name__ == "__main__":
-    save_news_articles("SAP.DE")
+    tickers = [# for project taken top 5 DAX stocks. Easily extendable to full DAX portfolio
+            "SAP.DE",
+            "SIE.DE",
+            "DTE.DE",
+            "ALV.DE",
+            "AIR.DE"]
+    for ticker in tickers:
+        save_news_articles(ticker)
     print("Data added in the table")
