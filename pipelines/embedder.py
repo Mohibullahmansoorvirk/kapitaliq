@@ -9,7 +9,7 @@ Call their servers directly. They run the model, we get the result back. IMPORTA
 embedder_ollama.py (other file) -> embedder models gets downloaded by ollama from HuggingFace and runs locally.
 
 """
-from langchain_huggingface import HuggingFaceEndpointEmbeddings #this calls HuggingFace Servers. No local model required
+from langchain_huggingface import HuggingFaceEndpointEmbeddings #this calls HuggingFace Servers. No local model required!
 from dotenv import load_dotenv
 import os
 load_dotenv()
