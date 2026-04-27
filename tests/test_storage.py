@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from kapitaliq.pipelines.data_storage import save_stock_data
+from pipelines.data_storage import save_stock_data
 import pandas as pd
 import pytest
 
