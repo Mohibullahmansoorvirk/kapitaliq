@@ -101,5 +101,7 @@ def handle_query(request: QueryRequest):
         #return {"intent": intent, "ticker": ticker, "decision": response["final_decision"]}
         return {"ticker": ticker, "Assistant_Response": response["final_decision"]}
         
-    
-    
+
+#to run the daily_refresh for daily update of data
+from pipelines.scheduler import schedule_daily_refresh
+schedule_daily_refresh()
