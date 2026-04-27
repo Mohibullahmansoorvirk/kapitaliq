@@ -14,7 +14,7 @@ fake_df = pd.DataFrame({
 }, index = ["2026-02-06", "2026-02-07"])
 
 #temporarily replace SessionLocal inside storage.py with a fake session (MagicMock)so to not create a real session with postgreSQL DB for test
-@patch("pipelines.storage.SessionLocal")
+@patch("pipelines.data_storage.SessionLocal")
 #patch automatically creates the MagicMock and passes it in this function as fake_session_local_class
 def test_save_stock_data(fake_session_local_class):
     #call the real function "save_stock_data" - internally db = SessionLocal() now becomes db = fake_session_local_class()
@@ -26,7 +26,7 @@ def test_save_stock_data(fake_session_local_class):
     assert fake_session_local_class.return_value.commit.called == True
 
 
-@patch("pipelines.storage.SessionLocal")
+@patch("pipelines.data_storage.SessionLocal")
 def test_rollback_stock_data(fake_session_local_class):
     #side effect is something you attach to a mock method to make it behave in a specific way when called. In this case simulating a crash of DB.
     fake_session_local_class.return_value.add.side_effect = Exception("db crashed")
