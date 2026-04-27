@@ -7,8 +7,8 @@ def test_fetch_returns_data_with_close_column():
 
     data = fetcher.fetch("5d")
     
-    assert not data.empty # data is not empty
-    assert "Close" in data.columns # Close is in columns
+    assert not data.empty #data is not empty
+    assert "Close" in data.columns #close is in columns
 
 def test_latest_price_is_positive():
     fetcher = StockFetcher("SAP.DE")

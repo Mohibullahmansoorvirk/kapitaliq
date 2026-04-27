@@ -73,4 +73,3 @@ class IntentRouter:
 if __name__ == "__main__":
     intent_router = IntentRouter()
     intent_router_response = intent_router.run("How are you doing")
-    print(intent_router_response)

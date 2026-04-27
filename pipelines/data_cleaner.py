@@ -9,7 +9,7 @@ class DataCleaner:
         self._data = data.copy() #to copy the original raw data incase it gets corrupts somewhere in the pipeline   
         logger.info(f"data successfully imported for cleaning")
 
-    # keep only relevant columns
+    #keep only relevant columns
     def _drop_unnecessary_columns(self) -> pd.DataFrame:
         logger.info(f"dropping un-necessary columns")
         self._data = self._data[["Open","High","Low","Close","Volume"]]

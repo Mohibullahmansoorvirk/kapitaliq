@@ -56,7 +56,7 @@ def save_news_articles(ticker: str) -> None:
                 #Conflict case: Insert the updated row if a conflict is found based on constraints defined in models.py
                 upsert_stmt = stmt.on_conflict_do_update(
                     index_elements=['ticker', 'published_date', 'article_url' ],  # the constraints to watch
-                    set_={ # what to update on conflict -  everything except conflict keys -> ticker and date. only runs when a conflict detected
+                    set_={ #what to update on conflict -  everything except conflict keys -> ticker and date. only runs when a conflict detected
                         "news_source": article["Article Source"],
                         "chunk_text": chunk,
                         "index_within_chunk": i + 1,
@@ -78,7 +78,7 @@ def save_news_articles(ticker: str) -> None:
 
 
 if __name__ == "__main__":
-    tickers = [# for project taken top 5 DAX stocks. Easily extendable to full DAX portfolio
+    tickers = [#for project taken top 5 DAX stocks. Easily extendable to full DAX portfolio
             "SAP.DE",
             "SIE.DE",
             "DTE.DE",

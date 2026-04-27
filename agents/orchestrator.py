@@ -118,7 +118,3 @@ if __name__ == "__main__":
         "final_decision": ""
 
     }) 
-
-    print(f"Data Agent has response:\n {response["analysis_result"]}")
-    print(f"NLP Agent has response:\n {response["nlp_result"]}")
-    print(f"Final Agent has response:\n {response["final_decision"]}")

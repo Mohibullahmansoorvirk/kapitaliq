@@ -46,7 +46,7 @@ def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
                 #Conflict case: Insert the updated row if a conflict is found based on constraints defined in models.py
             upsert_stmt = stmt.on_conflict_do_update(
                 index_elements=['ticker', 'date'],  # the constraints to watch
-                set_={ # what to update on conflict -  everything except conflict keys -> ticker and date. only runs when a conflict detected
+                set_={ #what to update on conflict -  everything except conflict keys -> ticker and date. only runs when a conflict detected
                     "open": row.Open,
                     "high": row.High,
                     "low": row.Low,
@@ -58,7 +58,7 @@ def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
             db.execute(upsert_stmt)
 
         logger.info(f"total rows: {i} saved")
-        db.commit() # commit only after all rows saved. partial data in case of failure is catastrophic for analysis
+        db.commit() #commit only after all rows saved. partial data in case of failure is catastrophic for analysis
 
     except Exception as e:
         db.rollback()
@@ -69,7 +69,7 @@ def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
         db.close()
 
 if __name__ == "__main__":
-    tickers = [ # for project taken top 5 DAX stocks. Easily extendable to full DAX portfolio
+    tickers = [ #for project taken top 5 DAX stocks. Easily extendable to full DAX portfolio
     "SAP.DE","SIE.DE","DTE.DE","ALV.DE","AIR.DE"]
     for ticker in tickers:
         fetcher = StockFetcher(ticker)

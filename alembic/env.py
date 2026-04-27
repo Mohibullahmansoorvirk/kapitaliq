@@ -8,26 +8,21 @@ from pipelines.models import StockPrice
 
 from alembic import context
 
-# this is the Alembic Config object, which provides
-# access to the values within the .ini file in use.
+#this is the Alembic Config object, which provides
+#access to the values within the .ini file in use
 config = context.config
 
-# Interpret the config file for Python logging.
-# This line sets up loggers basically.
+#interpret the config file for Python logging
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-#When class StockPrice(Base) is defined: SQLAlchemy automatically registers that table's structure into Base.metadata. 
-# Column names, types, constraints; all of it gets stored there automatically
-# container that holds the complete structural description of all the tables in the DB
+#When class StockPrice(Base) is defined: SQLAlchemy automatically registers that table's structure into Base.metadata
+#column names, types, constraints. all of it gets stored there automatically
+#container that holds the complete structural description of all the tables in the DB
 target_metadata = Base.metadata 
 
-# other values from the config, defined by the needs of env.py,
-# can be acquired:
-# my_important_option = config.get_main_option("my_important_option")
-# ... etc.
-
+#other values from the config, defined by the needs of env.py,
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")

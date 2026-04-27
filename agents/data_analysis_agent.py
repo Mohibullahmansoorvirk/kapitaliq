@@ -103,4 +103,4 @@ if __name__ == "__main__":
 
     analyst_agent= DataAnalystAgent()
     agent_response= analyst_agent.run(clean_data, "SAP.DE")
-    print(agent_response)
+

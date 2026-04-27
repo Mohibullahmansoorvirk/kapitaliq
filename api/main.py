@@ -26,7 +26,7 @@ def get_dashboard():
     try:
         for ticker in tickers:
             
-            # Stock query — last 30 days
+            # Stock query - last 30 days
             stock_rows = db.execute(
                 select(StockPrice)
                 .where(StockPrice.ticker == ticker)
@@ -40,7 +40,7 @@ def get_dashboard():
                 for row in stock_rows
             ]
             
-            # News query — last 3 articles
+            # News query - last 3 articles
             news_rows = db.execute(
                 select(NewsArticle)
                 .where(NewsArticle.ticker == ticker)

@@ -76,4 +76,3 @@ class NLPAgent:
 if __name__ == "__main__":
     news_analyst = NLPAgent()
     agent_response = news_analyst.run("SAP earnings performance", "SAP.DE", k=3)
-    print(agent_response)

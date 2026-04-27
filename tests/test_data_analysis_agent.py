@@ -21,14 +21,14 @@ def test_calculate_indicators():
     assert indicators_dict["lowest_value_past_20_days"] == 100.0
 
 def test_analyst_agent_response():
-    # here we need mock_llm - because we need to give the exact response we would expect in this test
+    #here we need mock_llm - because we need to give the exact response we would expect in this test
     mock_llm = MagicMock() 
     #when LCEL calls the mock_llm - it returns a string directly. so we dont need to extract and StrOutputParser gets the string and outputs the same string.
     mock_llm.return_value = "Stock Name: SAP.DE\nFinancial Decision: BULLISH\nReason: reasons given"
-    # creates the agent object with fake LLM inputed
+    #creates the agent object with fake LLM inputed
     analyst_agent_part_2= DataAnalystAgent(mock_llm)
     #this calls the run function with fake_df and ticker name
-    # calculate_indicators calculates real indicators from fake data
+    #calculate_indicators calculates real indicators from fake data
     #Chain is built; Chain invokes mock_llm
     #Mock returns the fake string; Parser passes it through; response gets the string
     agent_test_response = analyst_agent_part_2.run(fake_df, "SAP.DE")

@@ -15,14 +15,14 @@ fake_df = pd.DataFrame({
 
 #temporarily replace SessionLocal inside storage.py with a fake session (MagicMock)so to not create a real session with postgreSQL DB for test
 @patch("pipelines.storage.SessionLocal")
-# patch automatically creates the MagicMock and passes it in this function as fake_session_local_class
+#patch automatically creates the MagicMock and passes it in this function as fake_session_local_class
 def test_save_stock_data(fake_session_local_class):
-    # call the real function "save_stock_data" - internally db = SessionLocal() now becomes db = fake_session_local_class()
-    # so db inside the function is automatically fake_session_local_class.return_value
+    #call the real function "save_stock_data" - internally db = SessionLocal() now becomes db = fake_session_local_class()
+    #so db inside the function is automatically fake_session_local_class.return_value
     save_stock_data("SAP.DE", fake_df)
     
-    # return_value is the "fake db" instance that was returned when fake_session_local_class() was called inside the function
-    # .commit.called checks if commit() was ever called on that fake db instance
+    #return_value is the "fake db" instance that was returned when fake_session_local_class() was called inside the function
+    #.commit.called checks if commit() was ever called on that fake db instance
     assert fake_session_local_class.return_value.commit.called == True
 
 
