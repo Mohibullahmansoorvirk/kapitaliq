@@ -8,7 +8,7 @@
 
 **API Docs:** https://kapitaliq-production.up.railway.app/docs
 
-> Note: Current version supports single stock queries only. Multi stock support is in Beta. More details under the section _Project Roadmap_
+> Note: Current version supports single stock queries only. Multi stock support is in Beta. More details under the section "_Project Roadmap_"
 
 ---
 
@@ -116,6 +116,7 @@ kapitaliq/
 ├── streamlit_app.py              # Dashboard
 ├── startup.py                    # pgvector + migrations on boot
 └── docker-compose.yml            # Local deployment
+└── assets/                       # KapitalIQ System Architecture
 ```
 
 ---
