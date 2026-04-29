@@ -22,7 +22,7 @@ KapitalIQ replaces that workflow. Every morning at 9:30am shortly after the DAX 
 
 ### Architecture
 
-![Architecture](assets/KapitalIQ_SystemArchitecture.jpg)
+![Architecture](assets/KapitalIQ_System_Architecture.jpg)
 ---
 
 ### Key Design Decisions
