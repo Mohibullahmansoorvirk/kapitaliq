@@ -1,9 +1,14 @@
 ### KapitalIQ
 
-> AI powered Investment Analyst for German DAX stocks. Built as a production grade Multi-Agent System.
+![CI](https://github.com/Mohibullahmansoorvirk/kapitaliq/actions/workflows/ci.yml/badge.svg)
+
+> AI powered Investment Analyst for German DAX stocks. Designed and built as a production grade Multi agent AI system for automated DAX stock real time  investment decision making. Uses multiple specialized agents to analyze data and news, resolve conflicts and recommend one clear trading signal.
 
 **Live Demo:** https://web-production-99ef9.up.railway.app/
+
 **API Docs:** https://kapitaliq-production.up.railway.app/docs
+
+> Note: Current version supports single stock queries only. Multi stock support is in Beta. More details under the section _Project Roadmap_
 
 ---
 
@@ -17,7 +22,7 @@ KapitalIQ replaces that workflow. Every morning at 9:30am shortly after the DAX 
 
 ### Architecture
 
-
+![Architecture](assets/KapitalIQ_SystemArchitecture.jpg)
 ---
 
 ### Key Design Decisions
@@ -106,7 +111,7 @@ kapitaliq/
 │   └── database.py               # Engine + SessionLocal
 ├── api/main.py                   # FastAPI - /health /dashboard /query
 ├── configs/agents.py             # Centralized config
-├── tests/                        # 21 unit tests
+├── tests/                        # 21 unit tests (all passing)
 ├── alembic/                      # Migration history
 ├── streamlit_app.py              # Dashboard
 ├── startup.py                    # pgvector + migrations on boot
@@ -117,7 +122,8 @@ kapitaliq/
 
 ### Project Roadmap
 
-- KapitalIQ is built in three phases:
+> KapitalIQ is built in three phases:
+
 1. Alpha: A working MVP
 
 2. Beta: To bring it in a form which is ready for initial user testing
@@ -128,8 +134,8 @@ kapitaliq/
 | Version | Status | Completion Date |
 |---|---|---|
 | Alpha | Complete | 25.04.2026 |
-| Beta | In Progress | 31.07.2026 |
-| Gamma | Planned | 31.10.2026 |
+| Beta | In Progress | 31.07.2026 (Planned) |
+| Gamma | Planned | 31.10.2026 (Planned) |
 
 ### Alpha - MVP delivered and shipped
 
@@ -213,8 +219,10 @@ NEWSAPI_KEY=your_key
 HUGGINGFACE_API_KEY=your_key
 ```
 
+Start the investment analyst:
 ```bash
-python startup.py
+python startup.py          # creates pgvector extension
+alembic upgrade head       # runs migrations
 python -c "from pipelines.scheduler import run_daily_refresh; run_daily_refresh()"
 uvicorn api.main:app --reload        # Terminal 1
 streamlit run streamlit_app.py       # Terminal 2
