@@ -54,7 +54,8 @@
 
 
 ### Tech Stack
- 
+| Layer | Technology | Version |
+|---|---|---|
 | Orchestration | LangGraph | Alpha |
 | LLM | Groq - LLaMA 3.3 70B | Alpha |
 | LLM Framework | LangChain | Alpha |
@@ -79,8 +80,9 @@
 | Cloud | AWS multi-region | Gamma |
 
 
-### Project Structure
+## Project Structure
 
+```
 kapitaliq/
 ├── agents/
 │   ├── data_analysis_agent.py    # Indicators + LLM narrative
@@ -93,7 +95,7 @@ kapitaliq/
 │   ├── data_cleaner.py           # OHLCV cleaning
 │   ├── data_storage.py           # UPSERT to PostgreSQL
 │   ├── news_fetcher.py           # NewsAPI per ticker
-│   ├── chunker.py                # 300 word chunks, 45 word overlap
+│   ├── chunker.py                # 300-word chunks, 45-word overlap
 │   ├── embedder.py               # HuggingFace embeddings
 │   ├── news_storage.py           # Chunk + embed + store
 │   ├── rag_retriever.py          # Cosine similarity + metadata filter
@@ -101,14 +103,16 @@ kapitaliq/
 │   ├── scheduler.py              # APScheduler jobs
 │   ├── models.py                 # SQLAlchemy ORM models
 │   └── database.py               # Engine + SessionLocal
-├── api/main.py                   # FastAPI - /health /dashboard /query
+├── api/main.py                   # FastAPI — /health /dashboard /query
 ├── configs/agents.py             # Centralized config
-├── tests/                        # 21 unit tests
+├── tests/                        # 21 unit tests, all passing
 ├── alembic/                      # Migration history
 ├── streamlit_app.py              # Dashboard
 ├── startup.py                    # pgvector + migrations on boot
 └── docker-compose.yml            # Local development
+```
 
+---
 
 ### Project Roadmap
 
@@ -158,7 +162,7 @@ kapitaliq/
 
 - Planned for full public production readiness 
 
-— Kubernetes | Redis caching | async task queues | real time price streaming | AWS multi region deployment | user accounts 
+- Kubernetes | Redis caching | async task queues | real time price streaming | AWS multi region deployment | user accounts 
 
 - Watchlists | push alerts |exportable reports | GDPR & EU compliance | role-based access control | full DAX 40 coverage | Security implementation
 
