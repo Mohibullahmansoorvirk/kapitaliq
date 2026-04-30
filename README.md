@@ -135,8 +135,8 @@ kapitaliq/
 | Version | Status | Completion Date |
 |---|---|---|
 | Alpha | Complete | 25.04.2026 |
-| Beta | In Progress | 31.07.2026 (Planned) |
-| Gamma | Planned | 31.10.2026 (Planned) |
+| Beta | In Progress | 31.07.2026 (In Progress) |
+| Gamma | Planned | 31.12.2026 (Planned) |
 
 ### Alpha - MVP delivered and shipped
 

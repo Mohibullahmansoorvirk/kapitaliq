@@ -35,7 +35,7 @@ def save_stock_data(ticker: str, cleaned_data: pd.DataFrame) -> None:
             #Normal case: SQL Insert statement
             stmt = insert(StockPrice).values( #  all columns
                 ticker=ticker,
-                date=row.Index,
+                date=row.Index.date(),
                 open=row.Open,
                 high=row.High,
                 low=row.Low,
