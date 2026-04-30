@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-
+from datetime import date
 import requests
 import pandas as pd
 
@@ -23,7 +23,12 @@ for ticker, ticker_data in data.items():
     #stock prices table
     st.write("**Stock Prices (Last 30 days)**")
     df = pd.DataFrame(ticker_data["stock_data"])
-    st.dataframe(df)
+    df["date"] = pd.to_datetime(df["date"]).dt.date
+    today = date.today()
+    df["close"] = df.apply(
+        lambda row: "-" if row["date"] == today else row["close"], axis=1
+    )
+    st.dataframe(df[["date", "open", "close", "volume"]])
     
     #latest News Articles
     st.write("**Latest News**")

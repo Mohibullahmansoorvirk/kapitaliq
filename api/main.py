@@ -36,7 +36,7 @@ def get_dashboard():
             
             # Convert to list of dicts
             stock_data = [
-                {"date": str(row.date), "close": row.close, "volume": row.volume}
+                {"date": str(row.date), "open": row.open, "close": row.close, "volume": row.volume}
                 for row in stock_rows
             ]
             
