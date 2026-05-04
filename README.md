@@ -250,6 +250,6 @@ pytest tests/ -v
 
 ### Author
 
-Built by Mohibullah Mansoor Virk - AI Engineer, Germany.
+Mohibullah Mansoor Virk - Production grade AI Engineer, Germany.
 
 [GitHub](https://github.com/Mohibullahmansoorvirk) · [LinkedIn](https://www.linkedin.com/in/mohibullah-mansoor-virk/)
