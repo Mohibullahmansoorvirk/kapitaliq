@@ -147,16 +147,16 @@ Data pipeline | RAG | multi-agent orchestration | FastAPI | Streamlit dashboard 
 ### Beta - In Progress
 
 **Observability**
-- Structured logging sweep across all modules
-- Langfuse integration - LLM call tracing, latency, cost monitoring per query
+- Structured logging across all modules
+- Langfuse integration - LLM call tracing, latency, cost monitoring per query (tokens/sec)
 
 **Security**
 - JWT authentication on FastAPI endpoints
-- Input sanitization and prompt injection detection on `/query`
+- Input sanitization and OWASP top 10 for LLMs 
 
 **Testing**
 - Integration test suite - end-to-end from data fetch to final decision
-- Expanded unit test coverage for scheduler and Intent Router edge cases
+- Complete unit test coverage for scheduler and Intent Router edge cases
 
 **Multi-stock support**
 - Natural language multi stock comparison queries
@@ -178,18 +178,16 @@ Data pipeline | RAG | multi-agent orchestration | FastAPI | Streamlit dashboard 
 **Infrastructure**
 - Kubernetes
 - Redis caching for frequent ticker queries
-- Async agent execution via Celery + RabbitMQ
+- Async agent execution (Celery + RabbitMQ)
 
 **Data**
 - Full DAX 40 coverage - currently top 5 tickers
-- Real time price streaming via WebSocket
-- Alternative data - earnings transcripts, SEC filings, analyst reports
-- Paid news APIs with full article access
+- Real time price streaming (WebSocket)
+- Alternative data - earnings transcripts, analyst reports
 
 **Intelligence**
 - Fine tuned financial LLM on DAX specific decisions
 - Backtesting engine - validate signals against historical price movements
-- Portfolio level reasoning - cross ticker correlation and sector analysis
 - Confidence scoring with historical accuracy tracking
 
 **Product**
