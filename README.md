@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/Mohibullahmansoorvirk/kapitaliq/actions/workflows/ci.yml/badge.svg)
 
-> AI powered Investment Analyst for German DAX stocks. Designed and built as a production grade Multi agent AI system for automated DAX stock real time  investment decision making. Uses multiple specialized agents to analyze data and news, resolve conflicts and recommend one clear trading signal.
+> AI powered investment analyst for the German DAX market. A production grade multi agent system that reads the market, understands the news, thinks like a real financial analyst and tells you what matters before the market moves.
 
 **Live Demo:** https://kapitaliq.up.railway.app/
 
@@ -12,11 +12,13 @@
 
 ---
 
-### The Problem Statement
+### The Problem We Solve
 
-A retail investor tracking DAX stocks today opens multiple browser tabs, reads multiple news sites, manually compares price trends and still makes a gut decision. 
+Most investors spend hours reading news, checking charts and trying to make sense of conflicting information. Even after all that effort, decisions still come down to personal bias and incomplete analysis.
 
-KapitalIQ replaces that workflow. Every morning at 9:30am shortly after the DAX market opens, the system automatically fetches fresh prices and news. Runs them through specialized AI agents, resolves conflicts between agents and delivers a single explainable investment signal per stock.
+KapitalIQ changes this. Every morning it automatically fetches fresh stock prices and news, runs them through specialized AI agents that analyze data and sentiment independently, resolves conflicts between them and delivers one clear investment signal with the reasoning behind it.
+
+No more endless tabs. No more guessing. Just a clear answer backed by analysis.
 
 ---
 
@@ -145,16 +147,16 @@ Data pipeline | RAG | multi-agent orchestration | FastAPI | Streamlit dashboard 
 ### Beta - In Progress
 
 **Observability**
-- Structured logging sweep across all modules
-- Langfuse integration - LLM call tracing, latency, cost monitoring per query
+- Structured logging across all modules
+- Langfuse integration - LLM call tracing, latency, cost monitoring per query (tokens/sec)
 
 **Security**
 - JWT authentication on FastAPI endpoints
-- Input sanitization and prompt injection detection on `/query`
+- Input sanitization and OWASP top 10 for LLMs 
 
 **Testing**
 - Integration test suite - end-to-end from data fetch to final decision
-- Expanded unit test coverage for scheduler and Intent Router edge cases
+- Complete unit test coverage for scheduler and Intent Router edge cases
 
 **Multi-stock support**
 - Natural language multi stock comparison queries
@@ -176,18 +178,16 @@ Data pipeline | RAG | multi-agent orchestration | FastAPI | Streamlit dashboard 
 **Infrastructure**
 - Kubernetes
 - Redis caching for frequent ticker queries
-- Async agent execution via Celery + RabbitMQ
+- Async agent execution (Celery + RabbitMQ)
 
 **Data**
 - Full DAX 40 coverage - currently top 5 tickers
-- Real time price streaming via WebSocket
-- Alternative data - earnings transcripts, SEC filings, analyst reports
-- Paid news APIs with full article access
+- Real time price streaming (WebSocket)
+- Alternative data - earnings transcripts, analyst reports
 
 **Intelligence**
 - Fine tuned financial LLM on DAX specific decisions
 - Backtesting engine - validate signals against historical price movements
-- Portfolio level reasoning - cross ticker correlation and sector analysis
 - Confidence scoring with historical accuracy tracking
 
 **Product**
@@ -248,6 +248,6 @@ pytest tests/ -v
 
 ### Author
 
-Built by Mohibullah Mansoor Virk - AI Engineer, Germany.
+Mohibullah Mansoor Virk - Production grade AI Engineer, Germany.
 
 [GitHub](https://github.com/Mohibullahmansoorvirk) · [LinkedIn](https://www.linkedin.com/in/mohibullah-mansoor-virk/)
