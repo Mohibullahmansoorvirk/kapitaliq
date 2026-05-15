@@ -6,7 +6,7 @@ import pandas as pd
 
 st.title("KapitalIQ - Your Personal Investment Assistant")
 
-#base_url = "http://127.0.0.1:8000"#originally where FastAPI is running
+#base_url = "http://127.0.0.1:8000"#where fastapi is running originally
 
 #base_url = "http://fastapi:8000" #for docker container - local deployment "fastapi" the service name in docker-compose.yml
 base_url = os.getenv("FASTAPI_URL", "http://localhost:8000") # for Railway cloud deployment
