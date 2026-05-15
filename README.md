@@ -4,9 +4,9 @@
 
 > AI powered Investment Analyst for German DAX stocks. Designed and built as a production grade Multi agent AI system for automated DAX stock real time  investment decision making. Uses multiple specialized agents to analyze data and news, resolve conflicts and recommend one clear trading signal.
 
-**Live Demo:** https://web-production-99ef9.up.railway.app/
+**Live Demo:** https://kapitaliq.up.railway.app/
 
-**API Docs:** https://kapitaliq-production.up.railway.app/docs
+**API Docs:** https://kapitaliq-api.up.railway.app/docs
 
 > Note: Current version supports single stock queries only. Multi stock support is in Beta. More details under the section "_Project Roadmap_"
 
